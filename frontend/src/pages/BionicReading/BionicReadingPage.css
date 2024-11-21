@@ -1,0 +1,53 @@
+.bionic-reading-operation-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.bionic-reading-operation-page h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+.bionic-reading-operation-page .br-text-input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.br-button {
+    font-family: 'Merryweather';
+    font-size: 16px;
+    padding: 10px 22px;
+    margin-top: 5px;
+    border: none;
+    background-color: #007FFF;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+  }
+  
+  .br-button:hover {
+    background-color: #395B64;
+    padding: 10px 30px;
+  }
+
+
+.bionic-reading-result {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    min-height: 50px;
+    color: #000;
+    border-radius: 8px;
+    background-color: #f9f9f946;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+}

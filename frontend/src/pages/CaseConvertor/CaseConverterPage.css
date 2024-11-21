@@ -1,0 +1,77 @@
+/* styles/CaseConverterPage.css */
+
+.case-convertor-operation-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.case-convertor-operation-page h2 {
+  font-size: 24px;
+  color: #111;
+  margin: 8px 0 20px 0;
+  text-align: center;
+}
+
+.case-convertor-button {
+  font-family: 'Merryweather';
+  font-size: 16px;
+  padding: 10px 22px;
+  margin-top: 5px;
+  border: none;
+  background-color: #007FFF;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.case-convertor-button:hover {
+  background-color: #395B64;
+  padding: 10px 30px;
+}
+
+.case-convertor-result {
+  margin-top: 20px;
+  padding: 10px;
+  width: 140%;
+  min-height: 50px;
+  font-size: 16px;
+  color: #111;
+  background-color: #f9f9f946;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+/* Save Buttons */
+.save-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.save-buttons button {
+  flex: 1;
+}
+
+/* Media Query for smaller screens */
+@media (max-width: 600px) {
+  .operation-page {
+      padding: 10px;
+  }
+
+  button {
+      width: 100%;
+      padding: 10px;
+  }
+
+  .save-buttons {
+      flex-direction: column;
+      gap: 5px;
+  }
+}

@@ -1,0 +1,57 @@
+/* src/styles/EncryptTextPage.css */
+
+.encrypt-text-operation-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.encrypt-text-operation-page h2 {
+    font-size: 24px;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.encrypt-text-operation-page .text-input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.encrypted-button {
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 12px 22px;
+    border: none;
+    background-color: #007FFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.encrypted-button:hover {
+    background-color: #395B64;
+    padding: 15px 32px;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    min-height: 50px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+.download-message{
+    color: rgb(7, 72, 7);
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: bold;
+}

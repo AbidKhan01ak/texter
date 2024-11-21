@@ -1,0 +1,52 @@
+/* src/styles/EncryptTextPage.css, DecryptTextPage.css, SummaryGeneratorPage.css */
+
+.summary-generator-operation-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.summary-generator-operation-page h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+.summary-text-input{
+    margin-bottom: 20px;
+    
+}
+
+.summary-generator-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007FFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.summary-generator-button:hover {
+    background-color: #395B64;
+    padding: 10px 30px;
+}
+
+.summary-generator-result {
+    margin-top: 20px;
+    padding: 10px;
+    width: 140%;
+    min-height: 50px;
+    font-size: 16px;
+    color: #121212;
+    background-color: #f9f9f946;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 2;
+}

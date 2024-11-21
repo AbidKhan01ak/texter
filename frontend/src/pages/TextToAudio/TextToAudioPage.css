@@ -1,0 +1,90 @@
+.tta-operation-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 600px; 
+    margin: 0 auto;
+}
+
+.tta-operation-page h2{
+    font-size: 24px;
+    color: #111;
+    margin: 8px 0 20px 0;
+    text-align: center;
+}
+
+.audio-options {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.audio-options label {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.audio-options select {
+    padding: 8px;
+    font-size: 16px;
+    max-width: 300px;
+}
+
+.tta-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007FFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 40px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.tta-button:hover {
+    background-color: #395B64;
+    padding: 11px 30px;
+}
+
+.tta-link {
+    text-decoration: none;
+    background-color: #007FFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: larger;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: transform 0.3s ease, padding 0.3s ease;
+}
+
+.tta-link:hover {
+    background-color: #395B64;
+    padding: 11px 30px;
+    transform: translateY(-5px);
+}
+
+audio {
+    width: 100%;
+    border: none;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: #5ec3df;
+    border-radius: 8px;
+}
+
+audio::-webkit-media-controls-play-button {
+    background-color: #5ec3df;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}

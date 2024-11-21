@@ -1,0 +1,51 @@
+.whitespace-remover-operation-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.whitespace-remover-operation-page h2 {
+    font-size: 24px;
+    color: #111;
+    margin-bottom: 20px;
+}
+.wsr-button{
+    margin: 30px;
+    padding: 20px 30px;
+    font-size: 16px;
+    border: none;
+    background-color: #007FFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+.wsr-button:hover{
+    background-color: #395B64;
+    padding: 20px 40px;
+}
+
+.whitespace-remover-result {
+    margin-top: 20px;
+    padding: 10px;
+    width: 135%;
+    min-height: 50px;
+    font-size: 16px;
+    color: #000;
+    background-color: #f9f9f946;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.whitespace-remover-result pre {
+    white-space: pre-wrap; 
+    word-break: break-word; 
+    overflow-wrap: break-word; 
+    line-height: 1.5;
+    margin: 0;
+}

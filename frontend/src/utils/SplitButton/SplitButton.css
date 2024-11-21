@@ -1,0 +1,62 @@
+/* SplitButton.css */
+
+/* Button Group Styles */
+.button-group-custom {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    margin: 20px 0; /* Add margin on top and bottom */
+    font-family: 'Merryweather';
+}
+
+/* Button Styles */
+.button-group-custom .MuiButtonBase-root {
+    padding: 12px 20px; /* Add padding to the buttons */
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #007FFF; /* Set custom button color */
+    /* color: white; */
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.button-group-custom .MuiButtonBase-root:hover {
+    background-color: #395B64; /* Darker color on hover */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-popper {
+    margin-top: 5px; /* Spacing between button and menu */
+    animation: dropdownFade 0.3s ease-in-out; /* Dropdown animation */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+
+
+/* Menu Item Styles */
+.dropdown-popper .MuiMenuItem-root {
+    padding: 10px 15px; /* Menu item padding */
+    font-size: 15px;
+    font-weight: 400;
+    color: #222;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-popper .MuiMenuItem-root:hover {
+    background-color: #e3f2fd; /* Light blue on hover */
+}
+/* Wrapper around MenuList to limit visible items and enable scroll */
+.scrollable-menu-container {
+    max-height: 140px; /* Adjust height to fit approx. 4 items */
+    overflow-y: auto; /* Enables vertical scrolling if items exceed max-height */
+}
+
+/* Optional: Customize the scrollbar for the dropdown */
+.scrollable-menu-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.scrollable-menu-container::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border-radius: 4px;
+}

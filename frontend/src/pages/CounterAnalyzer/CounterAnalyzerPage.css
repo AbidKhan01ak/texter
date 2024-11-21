@@ -1,0 +1,50 @@
+/* //src/pages/CounterAnalyzer/CounterAnalyzerPages.css */
+.counter-analyzer-operation-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.counter-analyzer-operation-page h2 {
+    font-size: 24px;
+    color: #111;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+
+.counter-analyzer-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007FFF;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+    margin: 30px 0 15px 0;
+}
+
+.counter-analyzer-button:hover {
+    background-color: #395B64;
+    padding: 10px 30px;
+  }
+
+.counter-analyzer-result {
+    font-size: 18px;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%; 
+    max-width: 300px;
+    text-align: center;
+    background-color: #f9f9f9a6; 
+    color: #000;
+    text-align: left;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+

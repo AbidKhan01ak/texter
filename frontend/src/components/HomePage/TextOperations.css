@@ -1,0 +1,18 @@
+
+  
+  .operation-image {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  
+  .operation-name {
+    font-size: 16px;
+    color: #222;
+  }
+  
+  .operation-page {
+    padding: 20px;
+    text-align: center;
+  }
+  

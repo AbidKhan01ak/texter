@@ -1,0 +1,25 @@
+.spinner-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* Space between spinner and text */
+}
+
+.spinner {
+    border: 3px solid transparent;
+    border-top: 3px solid #fff; /* Adjust color */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

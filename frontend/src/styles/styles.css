@@ -1,0 +1,105 @@
+/* global styles sheet  */
+body {
+  font-family: 'Merriweather', 'Alegreya';
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  background-image: url("../../public/assets/appLogo/background.svg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.operation-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates 5 equal-width columns */
+  justify-content: center;
+  align-items: center;
+  padding: 120px 80px;
+  gap: 20px;
+}
+
+.operation-card {
+  width: 80%; 
+  height: 200px; 
+  border: 1px solid #ddd;
+  background-color: #cdcccc41;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease-out;
+}
+
+.operation-card:hover {
+  transform: translateY(-2px);
+  background-color: #cdcccc00;
+}
+
+.operation-page h2 {
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 20px;
+}
+
+.operation-button{
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #007FFF;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+}
+.operation-button:hover {
+  background-color: #395B64;
+}
+
+.save-buttons{
+  margin: 10px 20px;
+}
+
+
+
+.operation-result{
+  margin-top: 20px;
+  padding: 10px;
+  width: 100%;
+  min-height: 50px;
+  font-size: 16px;
+  color: #000;
+  background-color: #c5c5c582;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+.error-message{
+  color: red;
+  font-size: 20px;
+  font-weight: 700;
+}
+@media (max-width: 1200px) {
+  .operation-cards {
+      grid-template-columns: repeat(3, 1fr); /* 4 cards per row on medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .operation-cards {
+      grid-template-columns: repeat(2, 1fr); /* 3 cards per row on small screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .operation-cards {
+      grid-template-columns: repeat(1, 1fr); /* 2 cards per row on mobile screens */
+  }
+}
