@@ -10,6 +10,7 @@ __pycache__
 .pnp.js
 requirements.txt
 robots.txt
+.gitignore
 # testing
 /coverage
 

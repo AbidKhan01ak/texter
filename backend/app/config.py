@@ -2,7 +2,6 @@
 from dotenv import load_dotenv
 import os
 
-# Explicitly specify the file path
 load_dotenv("env.env")
 
 class Config:
