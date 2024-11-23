@@ -21,7 +21,6 @@ function TextOperations() {
         operationsRef.current.scrollIntoView({ behavior: 'smooth' });
     };
     useEffect(() => {
-        // You can call scrollToOperations if you want to scroll to the operations section on page load
         if (headerRef.current && operationsRef.current && footerRef.current) {
             scrollToHeader();
             scrollToOperations();
