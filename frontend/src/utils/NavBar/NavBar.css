@@ -16,7 +16,6 @@
     --font-size-dropdown: 18px;
 
     /* Spacing */
-    --padding-navbar: 10px 20px;
     --padding-dropdown: 20px;
     --gap-large: 20px;
     --gap-small: 5px;
@@ -34,7 +33,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--padding-navbar);
     background-color: var(--primary-bg);
     color: var(--primary-text);
     position: sticky;
