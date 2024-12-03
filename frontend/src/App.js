@@ -84,12 +84,35 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    // Scroll to Hero section on initial load (if needed)
+    const savedScroll = sessionStorage.getItem('scrollPosition');
+    if (savedScroll) {
+      window.scrollTo(0, savedScroll); // Restore the previous scroll position
+    } else {
+      // Optionally scroll to a specific section on first load (e.g., Hero)
+      const hero = document.querySelector('header'); // Assuming header is the Hero section
+      if (hero) {
+        hero.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('scrollPosition', window.scrollY);
+    });
+
+    return () => {
+      window.removeEventListener('beforeunload', () => { });
+    };
+  }, []);
+
+
   return (
     <Router>
       <NavBar
+        scrollToHeader={() => scrollToSection('header')}
         scrollToOperations={() => scrollToSection('.operation-cards')}
         scrollToFooter={() => scrollToSection('footer')}
-        scrollToHeader={() => scrollToSection('header')}
       />
       <Routes>
         {/* Home and Navigation Routes */}

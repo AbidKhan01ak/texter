@@ -47,6 +47,19 @@ const RootDiv = styled('div')`
   display: flex;
   max-width: 500%;
   width: 150%; 
+
+   @media (max-width: 1024px) {
+    max-width: 90%; /* Slightly reduce the width for medium screens */
+    width: 100%;
+  }
+    
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const TextareaElement = styled('textarea', {
@@ -79,6 +92,23 @@ const TextareaElement = styled('textarea', {
   // Firefox focus-visible outline reset
   &:focus-visible {
     outline: 0;
+  }
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+    height: 220px; /* Slightly reduce height for 1024px */
+    font-size: 13.5px; /* Subtle font size reduction */
+    padding: 7px 10px; /* Adjusted padding for balance */
+  }
+  @media (max-width: 768px) {
+    height: 180px; /* Slightly reduce height for smaller screens */
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  @media (max-width: 480px) {
+    height: 150px; /* Further reduce height for mobile screens */
+    font-size: 12px;
+    padding: 5px 8px;
   }
 `,
 );

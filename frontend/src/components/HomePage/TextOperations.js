@@ -9,22 +9,14 @@ function TextOperations() {
     const headerRef = useRef(null);
     const footerRef = useRef(null);
 
-    const scrollToHeader = () => {
-        headerRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
-
-    const scrollToFooter = () => {
-        footerRef.current.scrollIntoView({ behavior: 'smooth' });
-    };
-
-    const scrollToOperations = () => {
-        operationsRef.current.scrollIntoView({ behavior: 'smooth' });
+    const scrollToSection = (ref) => {
+        ref.current.scrollIntoView({ behavior: 'smooth' });
     };
     useEffect(() => {
         if (headerRef.current && operationsRef.current && footerRef.current) {
-            scrollToHeader();
-            scrollToOperations();
-            scrollToFooter();
+            scrollToSection(headerRef);
+            scrollToSection(operationsRef);
+            scrollToSection(footerRef);
         }
     }, [])
     const operationsLogoPath = "/assets/operationsLogo/"

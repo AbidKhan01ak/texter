@@ -1,5 +1,3 @@
-/* styles/CaseConverterPage.css */
-
 .case-convertor-operation-page {
   display: flex;
   flex-direction: column;
@@ -7,6 +5,8 @@
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .case-convertor-operation-page h2 {
@@ -17,7 +17,7 @@
 }
 
 .case-convertor-button {
-  font-family: 'Merryweather';
+  font-family: 'Merryweather', sans-serif;
   font-size: 16px;
   padding: 10px 22px;
   margin-top: 5px;
@@ -27,6 +27,8 @@
   cursor: pointer;
   border-radius: 8px;
   transition: background-color 0.3s ease, padding 0.3s ease;
+  width: 100%;
+  max-width: 200px;
 }
 
 .case-convertor-button:hover {
@@ -37,7 +39,8 @@
 .case-convertor-result {
   margin-top: 20px;
   padding: 10px;
-  width: 140%;
+  width: 100%;
+  max-width: 600px;
   min-height: 50px;
   font-size: 16px;
   color: #111;
@@ -46,32 +49,68 @@
   white-space: pre-wrap;
   word-wrap: break-word;
   text-align: left;
+  box-sizing: border-box;
 }
 
-/* Save Buttons */
 .save-buttons {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
+  justify-content: center;
+  width: 100%;
 }
 
 .save-buttons button {
   flex: 1;
+  max-width: 200px;
 }
 
-/* Media Query for smaller screens */
-@media (max-width: 600px) {
-  .operation-page {
-      padding: 10px;
+@media (max-width: 768px) {
+  .case-convertor-operation-page h2 {
+    font-size: 20px;
   }
 
-  button {
-      width: 100%;
-      padding: 10px;
+  .case-convertor-button {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+
+  .case-convertor-result {
+    font-size: 14px;
+  }
+
+  .save-buttons button {
+    flex: 1;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .case-convertor-operation-page {
+    padding: 10px;
+  }
+
+  .case-convertor-operation-page h2 {
+    font-size: 18px;
+  }
+
+  .case-convertor-button {
+    font-size: 12px;
+    padding: 6px 18px;
+  }
+
+  .case-convertor-result {
+    font-size: 12px;
   }
 
   .save-buttons {
-      flex-direction: column;
-      gap: 5px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .save-buttons button {
+    max-width: none;
+    width: 100%;
   }
 }

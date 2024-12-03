@@ -1,15 +1,11 @@
-export const validateInput = ({ value, validations, setErrorMessage }) => {
+export const validateInput = ({ value, validations, onValidationFail }) => {
     for (const validation of validations) {
         const error = validation(value);
         if (error) {
-            setErrorMessage(error);
-            setTimeout(() => {
-                setErrorMessage(""); // Clear error after a short period
-            }, 5000);
+            if (onValidationFail) onValidationFail(error);
             return false;
         }
     }
-    setErrorMessage(""); // Clear any previous error messages
     return true;
 };
 

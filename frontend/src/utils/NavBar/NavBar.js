@@ -10,6 +10,7 @@ function NavBar({ scrollToOperations, scrollToHeader, scrollToFooter }) {
     const [username, setUsername] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
     const [activeLink, setActiveLink] = useState('');
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // Add state for the mobile menu
 
     useEffect(() => {
         // Set the active link based on the current path
@@ -27,7 +28,6 @@ function NavBar({ scrollToOperations, scrollToHeader, scrollToFooter }) {
 
     useEffect(() => {
         const checkLoginStatus = () => {
-
             const token = localStorage.getItem('token');
             const storedUsername = localStorage.getItem('username');
             setIsLoggedIn(!!token);
@@ -77,6 +77,11 @@ function NavBar({ scrollToOperations, scrollToHeader, scrollToFooter }) {
         setActiveLink(link);
     };
 
+    // Toggle mobile menu
+    const toggleMenu = () => {
+        setIsMenuOpen(prevState => !prevState);
+    };
+
     return (
         <nav className="navbar">
             <div className="nav-left">
@@ -87,7 +92,13 @@ function NavBar({ scrollToOperations, scrollToHeader, scrollToFooter }) {
                 }}>
                     <img src="/assets/appLogo/appLogo.svg" alt="Logo" className="nav-logo" />
                 </a>
-                <ul className="nav-links">
+                {/* Hamburger icon */}
+                <div className="menu-toggle" onClick={toggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul className={`nav-links ${isMenuOpen ? 'mobile' : ''}`}>
                     <li><a href="#home"
                         className={activeLink === 'home' ? 'selected' : ''}
                         onClick={(e) => {

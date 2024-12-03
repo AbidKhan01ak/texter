@@ -1,18 +1,136 @@
+/* src/component/textOperation.css*/
+:root {
+  --primary-color: #007FFF;
+  --hover-color: #395B64;
+  --bg-color: #cdcccc41;
+  --hover-bg-color: #cdcccc00;
+  --border-color: #ddd;
+  --font-color: #222;
+  --font-size-small: 16px;
+  --font-size-medium: 20px;
+  --font-size-large: 24px;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --border-radius: 8px;
+  --gap-size: 20px;
+  --padding-small: 10px;
+  --padding-medium: 20px;
+  --padding-large: 80px;
+}
 
-  
-  .operation-image {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
+/* Operation Card Styles */
+.operation-card {
+  width: 80%;
+  height: 200px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease-out;
+}
+
+.operation-card:hover {
+  transform: translateY(-2px);
+  background-color: var(--hover-bg-color);
+}
+
+/* Operation Card Grid */
+.operation-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  padding: var(--padding-large);
+  gap: var(--gap-size);
+}
+
+/* Operation Card Content */
+.operation-image {
+  width: 60px;
+  height: 60px;
+  margin-bottom: var(--padding-small);
+}
+
+.operation-name {
+  font-size: var(--font-size-small);
+  color: var(--font-color);
+}
+
+.operation-page {
+  padding: var(--padding-medium);
+  text-align: center;
+}
+
+.operation-page h2 {
+  font-size: var(--font-size-large);
+  color: var(--font-color);
+  margin-bottom: var(--gap-size);
+}
+
+/* Buttons */
+.operation-button {
+  font-size: var(--font-size-small);
+  padding: var(--padding-small) var(--padding-medium);
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+  margin-left: var(--gap-size);
+}
+
+.operation-button:hover {
+  background-color: var(--hover-color);
+}
+
+.save-buttons {
+  margin: var(--gap-size);
+}
+
+/* Results */
+.operation-result {
+  margin-top: var(--gap-size);
+  padding: var(--padding-small);
+  width: 100%;
+  min-height: 50px;
+  font-size: var(--font-size-small);
+  color: #000;
+  background-color: var(--bg-color);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--border-radius);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .operation-cards {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
   }
-  
-  .operation-name {
-    font-size: 16px;
-    color: #222;
+}
+
+@media (max-width: 900px) {
+  .operation-cards {
+      grid-template-columns: repeat(2, 1fr); /* 2 cards per row on smaller tablets */
+      gap: var(--padding-small);
   }
-  
-  .operation-page {
-    padding: 20px;
-    text-align: center;
+}
+
+@media (max-width: 600px) {
+  .operation-cards {
+      grid-template-columns: repeat(1, 1fr); /* 1 card per row on mobile screens */
+      padding: var(--padding-medium);
   }
-  
+
+  .operation-card {
+      width: 100%;
+      height: auto;
+      padding: var(--padding-small);
+  }
+}

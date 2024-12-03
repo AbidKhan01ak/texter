@@ -1,11 +1,11 @@
-/* SplitButton.css */
-
 /* Button Group Styles */
 .button-group-custom {
     display: flex;
     justify-content: flex-start; /* Align buttons to the left */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
     margin: 20px 0; /* Add margin on top and bottom */
-    font-family: 'Merryweather';
+    font-family: 'Merryweather', sans-serif;
+    gap: 1px; /* Add spacing between buttons for better layout */
 }
 
 /* Button Styles */
@@ -14,9 +14,11 @@
     font-size: 16px;
     font-weight: 500;
     background-color: #007FFF; /* Set custom button color */
-    /* color: white; */
-    border-radius: 10px;
+    color: #fff; /* Set button text color */
     transition: background-color 0.3s ease;
+    flex: 1 1 auto; /* Make buttons take equal space */
+    max-width: 200px; /* Limit button width */
+    text-align: center;
 }
 
 .button-group-custom .MuiButtonBase-root:hover {
@@ -31,8 +33,6 @@
     overflow: hidden;
 }
 
-
-
 /* Menu Item Styles */
 .dropdown-popper .MuiMenuItem-root {
     padding: 10px 15px; /* Menu item padding */
@@ -45,6 +45,7 @@
 .dropdown-popper .MuiMenuItem-root:hover {
     background-color: #e3f2fd; /* Light blue on hover */
 }
+
 /* Wrapper around MenuList to limit visible items and enable scroll */
 .scrollable-menu-container {
     max-height: 140px; /* Adjust height to fit approx. 4 items */
@@ -59,4 +60,41 @@
 .scrollable-menu-container::-webkit-scrollbar-thumb {
     background-color: #c0c0c0;
     border-radius: 4px;
+}
+
+/* Responsive Adjustments */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+    .button-group-custom {
+        justify-content: center; /* Center align buttons on smaller screens */
+    }
+
+    .button-group-custom .MuiButtonBase-root {
+        padding: 10px 18px;
+        font-size: 15px;
+        flex: 1 1 100%; /* Make buttons stack vertically */
+        max-width: 100%; /* Full width buttons */
+    }
+}
+
+/* Small Screens (Mobile) */
+@media (max-width: 480px) {
+    .button-group-custom {
+        flex-direction: column;
+    }
+
+    .button-group-custom .MuiButtonBase-root {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .dropdown-popper .MuiMenuItem-root {
+        font-size: 14px;
+        padding: 8px 12px; /* Adjust padding for smaller screens */
+    }
+
+    .scrollable-menu-container {
+        max-height: 100px; /* Reduce max-height for smaller screens */
+    }
 }

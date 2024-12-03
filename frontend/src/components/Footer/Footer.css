@@ -1,80 +1,110 @@
-/* Footer.css */
+:root {
+    /* Color Palette */
+    --primary-bg-color: #1F509A;
+    --secondary-color: #eee;
+    --highlight-color: #111;
+    --input-border-color: #ccc;
+    --focus-border-color: #133E87;
+    --button-hover-bg-color: #0f2d63;
+    --error-color: #d11616;
+    --error-bg-color: #f8d7da;
+
+    /* Font Sizes */
+    --font-small: 0.8rem;
+    --font-medium: 1rem;
+    --font-large: 1.2rem;
+    --font-xlarge: 1.5rem;
+    --font-xxlarge: 1.8rem;
+
+    /* Spacing */
+    --padding-small: 8px;
+    --padding-medium: 10px;
+    --padding-large: 20px;
+    --margin-small: 5px;
+    --margin-medium: 10px;
+    --margin-large: 20px;
+
+    /* Border Radius */
+    --border-radius-small: 5px;
+    --border-radius-medium: 8px;
+
+    /* Shadow */
+    --input-shadow: 0 0 5px rgba(51, 153, 255, 0.5);
+}
 
 .footer {
-    background-color: #1F509A;
-    color: #eee;
-    padding: 20px;
-    font-size: 1rem;
+    background-color: var(--primary-bg-color);
+    color: var(--secondary-color);
+    padding: var(--padding-large);
+    font-size: var(--font-medium);
     display: flex;
     flex-direction: row;
-    text-align: center;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 20px;
+    gap: var(--margin-large);
     margin-top: 100px;
     position: relative;
 }
 
-.footer-left {
+.footer-left, .footer-right {
     flex: 1;
+    min-width: 300px;
+}
+
+.footer-left {
+    text-align: center;
 }
 
 .footer-right {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
 .developer-name {
-    font-size: 1.2rem;
+    font-size: var(--font-large);
     font-weight: 600;
-    margin-bottom: 30px;
-}
-.developer-name span{
-    font-size: 1.8rem;
-    color: #111;
-    font-weight: 900;
-}
-.info {
-    font-size: 1.2rem;
-    color: #eee;
-    justify-self: start;
+    margin-bottom: var(--margin-medium);
 }
 
-.portfolio-link{
-    display: flex;
-    text-align: left;
-    justify-content: left;
-    position: absolute;
-    bottom: 0;
-    margin-bottom: 50px;
-    
+.developer-name span {
+    font-size: var(--font-xxlarge);
+    color: var(--highlight-color);
+    font-weight: 900;
 }
+
+.info {
+    font-size: var(--font-large);
+    margin-bottom: var(--margin-medium);
+}
+
+.portfolio-link {
+    display: block;
+    text-align: left;
+    margin-bottom: var(--margin-medium);
+}
+
 .portfolio-link a {
     text-decoration: none;
-    font-size: 1rem;
+    font-size: var(--font-medium);
     font-weight: bold;
-    color: #fefefe;
-    
-    
+    color: var(--secondary-color);
 }
 
 .portfolio-link a span {
-    color: #000000;
+    color: var(--highlight-color);
 }
 
-
 .social-icons {
-    gap: 15px;
-    margin-top: 20px;
-    position: absolute;
-    margin-left: 100px;
+    display: flex;
+    justify-content: center;
+    gap: var(--margin-medium);
+    margin-top: var(--margin-medium);
 }
 
 .icon-link {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     cursor: pointer;
@@ -83,120 +113,68 @@
     transition: transform 0.3s ease;
 }
 
+.icon-link img {
+    width: 110%;
+    height: auto;
+}
+
 .icon-link:hover {
     transform: translateY(-5px);
 }
 
 .feedback-form {
     width: 100%;
-    font-family: 'Merriweather';
     max-width: 400px;
-    align-self: end;
-    margin-right: 200px;
-}
-.feedback-input {
-    width: 120%;
-    height: 30px;
-    font-size: 14px;     
-    font-family: 'Merriwether';
-    font-weight: 300;
-    line-height: 1rem;
-    padding: 8px 10px;
-    border-radius: 10px;
-    color: #333;
-    background: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-    margin: 5px 0 20px 50px;
+    margin: 0 auto;
 }
 
-
-/* style={{ height: '6rem', resize: 'vertical', }} */
-.feedback-textArea{
-    width: 120%;
-    height: 6rem;
-    font-size: 14px; 
-    font-weight: 300;
-    line-height: 1rem;
-    padding: 8px 10px;
-    border-radius: 10px;
-    font-family: 'Merriwether';
-    color: #333;
-    background: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-    margin: 5px 0 10px 50px;
-
-}
-.feedback-input:focus {
-    border-color: #000;
-    box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.2);
-}
-
-/* Error Message Styling */
-.footer-error {
-    color: #d9534f; /* Bootstrap red color or any other red shade for errors */
-    font-size: 14px;  /* Space between the field and error message */
-    padding: 5px;
-    margin-left: 200px;
-    background-color: #f8d7da; /* Light red background to highlight the error */
-    border: 1px solid #f5c6cb; /* Border color to match the background */
-    border-radius: 10px; /* Rounded corners for a soft look */
-    display: block; /* Ensures the error message appears under the input */
-    animation: fadeIn 0.3s ease-out; /* Fade-in animation to enhance user experience */
-}
-
-/* Animation for error message */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Optional - Focus on input when an error occurs */
-.feedback-input:invalid, .feedback-textArea:invalid {
-    border-color: #d9534f; /* Highlight the field border in red */
-    /* box-shadow: 0 0 5px rgba(217, 53, 78, 0.5); /* Add a subtle shadow to the input  */
-}
-
-/* Additional customization for input fields with errors */
 .feedback-input, .feedback-textArea {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on focus/invalid input */
+    width: 100%;
+    font-size: var(--font-medium);
+    padding: var(--padding-small);
+    border-radius: var(--border-radius-medium);
+    border: 1px solid var(--input-border-color);
+    margin-bottom: var(--margin-medium);
 }
 
-/* Optional - Style for the input and textarea elements when there is an error */
-.feedback-input.error, .feedback-textArea.error {
-    border-color: #d9534f;
-    box-shadow: 0 0 5px rgba(217, 53, 78, 0.5);
+.feedback-input:focus, .feedback-textArea:focus {
+    border-color: var(--focus-border-color);
+    outline: none;
+    box-shadow: var(--input-shadow);
 }
-
 
 .submit-button {
-    background-color: #133E87;
-    color: #fff;
-    padding: 10px 20px;
+    background-color: var(--focus-border-color);
+    color: var(--secondary-color);
+    padding: var(--padding-medium) var(--padding-large);
     border: none;
-    border-radius: 4px;
-    margin-left: 220px;
+    border-radius: var(--border-radius-medium);
     cursor: pointer;
-    font-size: 1rem;
+    font-size: var(--font-medium);
+    width: 100%;
     transition: background-color 0.3s ease;
 }
 
 .submit-button:hover {
-    background-color: #0f2d63;
+    background-color: var(--button-hover-bg-color);
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
+/* Error Styling */
+.footer-error {
+    color: var(--error-color);
+    background-color: var(--error-bg-color);
+    border-radius: var(--border-radius-small);
+    padding: var(--padding-small);
+    margin: var(--margin-small);
+    display: inline;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
     .footer {
         flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
     .footer-left, .footer-right {
@@ -206,9 +184,49 @@
     .social-icons {
         justify-content: center;
     }
+}
 
-    .icon-link {
-        width: 35px;
-        height: 35px;
+@media (max-width: 768px) {
+    .developer-name {
+        font-size: var(--font-medium);
+    }
+
+    .info {
+        font-size: var(--font-small);
+    }
+
+    .portfolio-link a {
+        font-size: var(--font-small);
+    }
+
+    .feedback-input, .feedback-textArea {
+        font-size: var(--font-small);
+    }
+
+    .submit-button {
+        font-size: var(--font-small);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: var(--padding-medium);
+    }
+
+    .developer-name span {
+        font-size: var(--font-xlarge);
+    }
+
+    .feedback-form {
+        padding: var(--padding-small);
+    }
+
+    .feedback-input, .feedback-textArea {
+        padding: var(--padding-small);
+    }
+
+    .submit-button {
+        padding: var(--padding-small) var(--padding-medium);
+        font-size: var(--font-small);
     }
 }
