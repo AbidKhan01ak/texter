@@ -1,13 +1,29 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../NavBar/NavBar.css';
 import LoggedInImg from '../../assets/loggedIn.svg';
 
 function NavBar({ scrollToOperations, scrollToHeader, scrollToFooter }) {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState('');
     const [showDropdown, setShowDropdown] = useState(false);
+    const [activeLink, setActiveLink] = useState('');
+
+    useEffect(() => {
+        // Set the active link based on the current path
+        const currentPath = location.pathname;
+        if (currentPath === '/') {
+            setActiveLink('home');
+        } else if (currentPath === '/features') {
+            setActiveLink('features');
+        } else if (currentPath === '/contact') {
+            setActiveLink('contact');
+        } else {
+            setActiveLink('');
+        }
+    }, [location.pathname]);
 
     useEffect(() => {
         const checkLoginStatus = () => {
@@ -57,28 +73,42 @@ function NavBar({ scrollToOperations, scrollToHeader, scrollToFooter }) {
         }
     };
 
+    const handleLinkClick = (link) => {
+        setActiveLink(link);
+    };
+
     return (
         <nav className="navbar">
             <div className="nav-left">
                 <a href='#home' onClick={(e) => {
                     e.preventDefault();
+                    handleLinkClick('home');
                     handleScrollNavigation(scrollToHeader);
                 }}>
                     <img src="/assets/appLogo/appLogo.svg" alt="Logo" className="nav-logo" />
                 </a>
                 <ul className="nav-links">
-                    <li><a href="#home" onClick={(e) => {
-                        e.preventDefault();
-                        handleScrollNavigation(scrollToHeader);
-                    }}><img src="/assets/NavBarLogo/HomeLogo.svg" alt="logo" />Home</a></li>
-                    <li><a href="#features" onClick={(e) => {
-                        e.preventDefault();
-                        handleScrollNavigation(scrollToOperations);
-                    }}><img src="/assets/NavBarLogo/FeaturesLogo.svg" alt="logo" />Features</a></li>
-                    <li><a href="#contact" onClick={(e) => {
-                        e.preventDefault();
-                        handleScrollNavigation(scrollToFooter);
-                    }}><img src="/assets/NavBarLogo/ContactLogo.svg" alt="logo" />Contact</a></li>
+                    <li><a href="#home"
+                        className={activeLink === 'home' ? 'selected' : ''}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleLinkClick('home');
+                            handleScrollNavigation(scrollToHeader);
+                        }}><img src="/assets/NavBarLogo/HomeLogo.svg" alt="logo" />Home</a></li>
+                    <li><a href="#features"
+                        className={activeLink === 'features' ? 'selected' : ''}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleLinkClick('features');
+                            handleScrollNavigation(scrollToOperations);
+                        }}><img src="/assets/NavBarLogo/FeaturesLogo.svg" alt="logo" />Features</a></li>
+                    <li><a href="#contact"
+                        className={activeLink === 'contact' ? 'selected' : ''}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            handleLinkClick('contact');
+                            handleScrollNavigation(scrollToFooter);
+                        }}><img src="/assets/NavBarLogo/ContactLogo.svg" alt="logo" />Contact</a></li>
                 </ul>
             </div>
             <div className="nav-right">

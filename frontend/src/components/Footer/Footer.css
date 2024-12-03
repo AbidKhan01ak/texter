@@ -1,7 +1,7 @@
 /* Footer.css */
 
 .footer {
-    background-color: #395B64;
+    background-color: #1F509A;
     color: #eee;
     padding: 20px;
     font-size: 1rem;
@@ -33,7 +33,7 @@
 }
 .developer-name span{
     font-size: 1.8rem;
-    color: #272525;
+    color: #111;
     font-weight: 900;
 }
 .info {
@@ -125,13 +125,56 @@
     background: #fff;
     border: 1px solid #ccc;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
-    margin: 5px 0 20px 50px;
+    margin: 5px 0 10px 50px;
 
 }
 .feedback-input:focus {
     border-color: #000;
     box-shadow: 0 0 0 3px rgba(51, 153, 255, 0.2);
 }
+
+/* Error Message Styling */
+.footer-error {
+    color: #d9534f; /* Bootstrap red color or any other red shade for errors */
+    font-size: 14px;  /* Space between the field and error message */
+    padding: 5px;
+    margin-left: 200px;
+    background-color: #f8d7da; /* Light red background to highlight the error */
+    border: 1px solid #f5c6cb; /* Border color to match the background */
+    border-radius: 10px; /* Rounded corners for a soft look */
+    display: block; /* Ensures the error message appears under the input */
+    animation: fadeIn 0.3s ease-out; /* Fade-in animation to enhance user experience */
+}
+
+/* Animation for error message */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optional - Focus on input when an error occurs */
+.feedback-input:invalid, .feedback-textArea:invalid {
+    border-color: #d9534f; /* Highlight the field border in red */
+    /* box-shadow: 0 0 5px rgba(217, 53, 78, 0.5); /* Add a subtle shadow to the input  */
+}
+
+/* Additional customization for input fields with errors */
+.feedback-input, .feedback-textArea {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on focus/invalid input */
+}
+
+/* Optional - Style for the input and textarea elements when there is an error */
+.feedback-input.error, .feedback-textArea.error {
+    border-color: #d9534f;
+    box-shadow: 0 0 5px rgba(217, 53, 78, 0.5);
+}
+
 
 .submit-button {
     background-color: #133E87;

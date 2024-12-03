@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 from flask_cors import CORS  # Import CORS from flask_cors
 from app.models.password_history import PasswordHistory  # Import PasswordHistory model
 from app.routes.history_routes import history_bp
-
+from app.routes.feedback_routes import feedback_bp
 
 load_dotenv()
 
@@ -32,6 +32,9 @@ def create_app():
 
     # Register the blueprint
     app.register_blueprint(history_bp, url_prefix='/history')
+    # Register the blueprint
+    app.register_blueprint(feedback_bp, url_prefix='/feedback')
+    
     with app.app_context():
         db.create_all()  # Create tables if they don't exist
 

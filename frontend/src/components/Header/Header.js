@@ -5,11 +5,11 @@ import HeaderGradient from '../../utils/HeaderGradient/HeaderGradient';
 const Header = forwardRef((props, ref) => {
     return (
         <HeaderGradient>
-            <header className="header">
+            <header ref={ref} className="header">
                 <div className="header-content">
                     <h1>texTer</h1>
                     <div className="logo-placeholder">
-                        <img src="/assets/appLogo/appLogo.svg" alt="Logo" />
+                        <img src="/assets/appLogo/appLogo.svg" alt="TexTer logo" />
                     </div>
                 </div>
                 <p className="header-intro">

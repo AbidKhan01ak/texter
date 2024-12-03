@@ -1,27 +1,47 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import HidePassword from '../../assets/HidePassword.svg';
 import ShowPassword from '../../assets/ShowPassword.svg';
 import '../Signup/SignupPage.css';
 
-function SignupPage() {
-    const [formData, setFormData] = useState({
+const initialState = {
+    formData: {
         first_name: '',
         last_name: '',
         username: '',
         email: '',
         password: ''
-    });
-    const [error, setError] = useState(null);
-    const [showPassword, setShowPassword] = useState(false);
+    },
+    showPassword: false
+};
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'SET_FORM_DATA':
+            return {
+                ...state,
+                formData: {
+                    ...state.formData,
+                    [action.field]: action.value
+                }
+            };
+        case 'TOGGLE_PASSWORD':
+            return { ...state, showPassword: !state.showPassword };
+        default:
+            return state;
+    }
+};
+
+function SignupPage({ showPopup }) {
+    const [state, dispatch] = useReducer(reducer, initialState);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        dispatch({ type: 'SET_FORM_DATA', field: name, value });
     };
     const togglePasswordVisibility = () => {
-        setShowPassword(!showPassword);
+        dispatch({ type: 'TOGGLE_PASSWORD' });
     };
 
     const handleSubmit = async (e) => {
@@ -32,18 +52,18 @@ function SignupPage() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(state.formData)
             });
 
             if (!response.ok) {
                 const data = await response.json();
-                setError(data.message || 'Signup failed');
+                showPopup(data.message || 'Signup failed, account with these details already exists!', 'error');
             } else {
+                showPopup('Signup successful! Redirecting to login...', 'success');
                 navigate('/login');
             }
         } catch (err) {
-            console.error('Error during signup:', err);
-            setError('Network error. Please check your connection.');
+            showPopup('Network error. Please check your connection.', 'error');
         }
     };
 
@@ -57,7 +77,7 @@ function SignupPage() {
                         type="text"
                         id="first_name"
                         name="first_name"
-                        value={formData.first_name}
+                        value={state.formData.first_name}
                         onChange={handleChange}
                         required
                     />
@@ -68,7 +88,7 @@ function SignupPage() {
                         type="text"
                         id="last_name"
                         name="last_name"
-                        value={formData.last_name}
+                        value={state.formData.last_name}
                         onChange={handleChange}
                         required
                     />
@@ -79,7 +99,7 @@ function SignupPage() {
                         type="text"
                         id="username"
                         name="username"
-                        value={formData.username}
+                        value={state.formData.username}
                         onChange={handleChange}
                         required
                     />
@@ -90,7 +110,7 @@ function SignupPage() {
                         type="email"
                         id="email"
                         name="email"
-                        value={formData.email}
+                        value={state.formData.email}
                         onChange={handleChange}
                         required
                     />
@@ -99,20 +119,19 @@ function SignupPage() {
                     <label htmlFor="password">Password</label>
                     <div className="password-input-container">
                         <input
-                            type={showPassword ? 'text' : 'password'}
+                            type={state.showPassword ? 'text' : 'password'}
                             id="password"
                             name="password"
-                            value={formData.password}
+                            value={state.formData.password}
                             onChange={handleChange}
                             required
                         />
                         <span onClick={togglePasswordVisibility} className="password-toggle-icon">
-                            <img src={showPassword ? ShowPassword : HidePassword} alt="Toggle visibility" />
+                            <img src={state.showPassword ? ShowPassword : HidePassword} alt="Toggle visibility" />
                         </span>
                     </div>
                 </div>
                 <button type="submit" className="signup-button">Sign up</button>
-                {error && <p className="error-message">{error}</p>}
             </form>
             <p className="login-link">
                 Already have an account? <Link to="/login">Log in</Link>
