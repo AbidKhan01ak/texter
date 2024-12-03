@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import TextInput from '../../utils/TextInput';
 import SplitButton from '../../utils/SplitButton/SplitButton';
 import { getFileName } from '../../utils/FileUtils';
@@ -8,15 +8,39 @@ import LoadingSpinner from '../../utils/LoadingSpinner/LoadingSpinner';
 import './ChangeFontPage.css';
 import { logAction } from '../../utils/logAction';
 import { validateInput, isNotEmpty } from '../../validation/validation';
+import Popup from '../../utils/Popup/Popup';
+
+const initialState = {
+    text: '',
+    selectedOption: 0,
+    styledText: '',
+    loading: false,
+    resultLoading: false,
+    popup: { message: '', type: '' },
+}
+
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'SET_TEXT':
+            return { ...state, text: action.payload };
+        case 'SET_SELECTED_OPTION':
+            return { ...state, selectedOption: action.payload };
+        case 'SET_STYLED_TEXT':
+            return { ...state, styledText: action.payload };
+        case 'SET_LOADING':
+            return { ...state, loading: action.payload };
+        case 'SET_RESULT_LOADING':
+            return { ...state, resultLoading: action.payload };
+        case 'SET_POPUP':
+            return { ...state, popup: action.payload };
+        default:
+            return state;
+    }
+};
 
 function ChangeFontPage() {
-    const [text, setText] = useState('');
-    const [selectedOption, setSelectedOption] = useState(0);
-    const [styledText, setStyledText] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [resultLoading, setResultLoading] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
-
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { text, selectedOption, styledText, loading, resultLoading, popup } = state;
     const fontOptions = [
         'Arial', 'Roboto', 'Poppins', 'Lobster', 'Georgia', 'Times New Roman',
         'Montserrat', 'Playfair Display', 'Noto Sans', 'Oswald'
@@ -40,7 +64,7 @@ function ChangeFontPage() {
     // Debounce text and fontStyle changes
     useEffect(() => {
         if (!text.trim()) return;
-        setResultLoading(true);
+        dispatch({ type: 'SET_RESULT_LOADING', payload: true });
         const fetchStyledText = debounce(async () => {
             try {
                 const response = await fetch('http://localhost:5000/text/change-font', {
@@ -50,16 +74,16 @@ function ChangeFontPage() {
                 });
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('Styled Text:', data.styledText);
-                    setStyledText(data.styledText);
+                    dispatch({ type: 'SET_STYLED_TEXT', payload: data.styledText });
                     logAction("Font styled Applied");
+                    dispatch({ type: 'SET_POPUP', payload: { message: 'Font styled applied successfully!', type: 'success' } });
                 } else {
-                    console.error('Failed to fetch styled text from the server.');
+                    dispatch({ type: 'SET_POPUP', payload: { message: 'Failed to fetch styled text from the server.', type: 'error' } });
                 }
             } catch (error) {
-                console.error('Error:', error);
+                dispatch({ type: 'SET_POPUP', payload: { message: 'Error occurred while fetching styled text.', type: 'error' } });
             } finally {
-                setResultLoading(false);
+                dispatch({ type: 'SET_RESULT_LOADING', payload: false });
             }
         }, 1000);
 
@@ -73,12 +97,14 @@ function ChangeFontPage() {
         const isValid = validateInput({
             value: text,
             validations: [isNotEmpty],
-            setErrorMessage,
+            onValidationFail: (error) => {
+                dispatch({ type: 'SET_POPUP', payload: { message: error, type: 'error' } });
+            },
         });
 
         if (!isValid) return;
 
-        setLoading(true);
+        dispatch({ type: 'SET_LOADING', payload: true });
         setTimeout(async () => {
             const pdf = new jsPDF();
             const pageWidth = pdf.internal.pageSize.getWidth();
@@ -129,8 +155,9 @@ function ChangeFontPage() {
             }
 
             pdf.save(getFileName('texter.io-change-font', 'pdf'));
-            setLoading(false);
+            dispatch({ type: 'SET_LOADING', payload: false });
             logAction("Saved PDF from Font Changer Page");
+            dispatch({ type: 'SET_POPUP', payload: { message: 'PDF saved successfully!', type: 'success' } });
         }, 1000);
     };
     return (
@@ -138,14 +165,13 @@ function ChangeFontPage() {
             <h2>Change Font</h2>
             <TextInput
                 value={text}
-                onChange={(e) => setText(e.target.value)}
+                onChange={(e) => dispatch({ type: 'SET_TEXT', payload: e.target.value })}
                 placeholder="Enter text to apply font style"
             />
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <SplitButton
                 options={fontOptions}
                 selectedOption={selectedOption}
-                setSelectedOption={setSelectedOption}
+                setSelectedOption={(option) => dispatch({ type: 'SET_SELECTED_OPTION', payload: option })}
             />
 
             <div className="change-font-result"
@@ -157,6 +183,8 @@ function ChangeFontPage() {
                     <LoadingSpinner /> : 'Save as PDF'}
                 </button>
             </div>
+            {/* Render the Popup if there's a message */}
+            <Popup message={popup.message} type={popup.type} onClose={() => dispatch({ type: 'SET_POPUP', payload: { message: '', type: '' } })} />
         </div>
     );
 }

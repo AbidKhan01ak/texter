@@ -1,27 +1,55 @@
+:root {
+    /* Font sizes */
+    --font-size-default: 16px;
+    --font-size-small: 14px;
+    --font-size-medium: 15px;
+    --font-size-large: 18px;
+    --font-size-xl: 24px;
+    
+    /* Spacing */
+    --padding-small: 10px;
+    --padding-medium: 15px;
+    --padding-large: 20px;
+    --padding-xlarge: 22px;
+    --margin-small: 5px;
+    --margin-medium: 10px;
+
+    /* Colors */
+    --color-primary: #007FFF;
+    --color-primary-hover: #395B64;
+    --color-background: #f9f9f946;
+    --color-text: #111;
+    --color-heading: #333;
+    
+    /* Button */
+    --button-radius: 8px;
+    --button-padding: 10px 22px;
+}
+
 .change-font-operation-page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: var(--padding-large);
     max-width: 800px;
     margin: 0 auto;
 }
 
 .change-font-operation-page h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: var(--font-size-xl);
+    color: var(--color-heading);
+    margin-bottom: var(--padding-medium);
     text-align: center;
 }
 
 .change-font-result {
-    margin-top: 20px;
-    padding: 10px;
-    width: 140%;
+    margin-top: var(--padding-medium);
+    padding: var(--padding-small);
+    width: 100%;
     min-height: 50px;
-    font-size: 16px;
-    color: #111;
-    background-color: #f9f9f946;
+    font-size: var(--font-size-default);
+    color: var(--color-text);
+    background-color: var(--color-background);
     border-radius: 10px;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -30,26 +58,85 @@
 
 .change-font-save-buttons {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    gap: var(--margin-medium);
+    margin-top: var(--padding-medium);
+    width: 100%;
+    justify-content: center;
 }
+
 .save-buttons button {
     flex: 1;
-  }
+}
+
 .change-font-button {
-    font-family: 'Merryweather';
-    font-size: 16px;
-    padding: 10px 22px;
-    margin-top: 5px;
+    font-size: var(--font-size-default);
+    padding: var(--button-padding);
+    margin-top: var(--margin-small);
     border: none;
-    background-color: #007FFF;
+    background-color: var(--color-primary);
     color: #fff;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: var(--button-radius);
     transition: background-color 0.3s ease, padding 0.3s ease;
 }
+
 .change-font-button:hover {
-    background-color: #395B64;
+    background-color: var(--color-primary-hover);
     padding: 10px 30px;
 }
-  
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .change-font-operation-page {
+        padding: var(--padding-small);
+        width: 100%;
+    }
+
+    .change-font-operation-page h2 {
+        font-size: var(--font-size-small);
+    }
+
+    .change-font-result {
+        width: 100%;
+        font-size: var(--font-size-small);
+    }
+
+    .change-font-button {
+        width: 100%;
+        font-size: var(--font-size-small);
+        padding: 12px 0;
+    }
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+    .change-font-operation-page {
+        padding: var(--padding-medium);
+    }
+
+    .change-font-operation-page h2 {
+        font-size: var(--font-size-medium);
+    }
+
+    .change-font-result {
+        font-size: var(--font-size-medium);
+    }
+
+    .change-font-button {
+        font-size: var(--font-size-medium);
+        padding: 12px 20px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+    .change-font-result {
+        width: 100%;
+        font-size: var(--font-size-large);
+    }
+
+    .change-font-button {
+        font-size: var(--font-size-large);
+        padding: 12px 22px;
+    }
+}

@@ -1,8 +1,38 @@
+:root {
+  /* Font Sizes */
+  --font-size-default: 16px;
+  --font-size-small: 14px;
+  --font-size-medium: 18px;
+  --font-size-large: 24px;
+  
+  /* Spacing */
+  --padding-small: 6px;
+  --padding-medium: 8px;
+  --padding-large: 10px;
+  --padding-xlarge: 20px;
+  --margin-small: 5px;
+  --margin-medium: 10px;
+  --margin-large: 20px;
+
+  /* Colors */
+  --color-primary: #007FFF;
+  --color-primary-hover: #395B64;
+  --color-text: #111;
+  --color-background: #f9f9f946;
+  --color-heading: #111;
+  
+  /* Button */
+  --button-radius: 8px;
+  --button-padding: 10px 22px;
+  --button-max-width: 200px;
+  --button-font-size: 16px;
+}
+
 .case-convertor-operation-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: var(--padding-xlarge);
   max-width: 800px;
   margin: 0 auto;
   width: 100%;
@@ -10,41 +40,41 @@
 }
 
 .case-convertor-operation-page h2 {
-  font-size: 24px;
-  color: #111;
-  margin: 8px 0 20px 0;
+  font-size: var(--font-size-large);
+  color: var(--color-heading);
+  margin: var(--margin-small) 0 var(--margin-large) 0;
   text-align: center;
 }
 
 .case-convertor-button {
   font-family: 'Merryweather', sans-serif;
-  font-size: 16px;
-  padding: 10px 22px;
-  margin-top: 5px;
+  font-size: var(--button-font-size);
+  padding: var(--button-padding);
+  margin-top: var(--margin-small);
   border: none;
-  background-color: #007FFF;
+  background-color: var(--color-primary);
   color: #fff;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: var(--button-radius);
   transition: background-color 0.3s ease, padding 0.3s ease;
   width: 100%;
-  max-width: 200px;
+  max-width: var(--button-max-width);
 }
 
 .case-convertor-button:hover {
-  background-color: #395B64;
+  background-color: var(--color-primary-hover);
   padding: 10px 30px;
 }
 
 .case-convertor-result {
-  margin-top: 20px;
-  padding: 10px;
+  margin-top: var(--margin-large);
+  padding: var(--padding-small);
   width: 100%;
   max-width: 600px;
   min-height: 50px;
-  font-size: 16px;
-  color: #111;
-  background-color: #f9f9f946;
+  font-size: var(--font-size-default);
+  color: var(--color-text);
+  background-color: var(--color-background);
   border-radius: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -55,62 +85,64 @@
 .save-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  gap: var(--margin-medium);
+  margin-top: var(--margin-large);
   justify-content: center;
   width: 100%;
 }
 
 .save-buttons button {
   flex: 1;
-  max-width: 200px;
+  max-width: var(--button-max-width);
 }
 
+/* Mobile Styles */
 @media (max-width: 768px) {
   .case-convertor-operation-page h2 {
-    font-size: 20px;
+      font-size: var(--font-size-medium);
   }
 
   .case-convertor-button {
-    font-size: 14px;
-    padding: 8px 20px;
+      font-size: var(--font-size-small);
+      padding: var(--padding-medium) 20px;
   }
 
   .case-convertor-result {
-    font-size: 14px;
+      font-size: var(--font-size-small);
   }
 
   .save-buttons button {
-    flex: 1;
-    max-width: 180px;
+      flex: 1;
+      max-width: 180px;
   }
 }
 
+/* Small Mobile Styles */
 @media (max-width: 480px) {
   .case-convertor-operation-page {
-    padding: 10px;
+      padding: var(--padding-small);
   }
 
   .case-convertor-operation-page h2 {
-    font-size: 18px;
+      font-size: var(--font-size-small);
   }
 
   .case-convertor-button {
-    font-size: 12px;
-    padding: 6px 18px;
+      font-size: var(--font-size-small);
+      padding: var(--padding-small) 18px;
   }
 
   .case-convertor-result {
-    font-size: 12px;
+      font-size: var(--font-size-small);
   }
 
   .save-buttons {
-    flex-direction: column;
-    gap: 5px;
+      flex-direction: column;
+      gap: 5px;
   }
 
   .save-buttons button {
-    max-width: none;
-    width: 100%;
+      max-width: none;
+      width: 100%;
   }
 }
