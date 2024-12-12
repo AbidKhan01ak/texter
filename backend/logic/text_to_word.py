@@ -1,20 +1,33 @@
 from docx import Document
 import os
 
-def convert_text_to_word(text, output_dir='generated_files'):
+
+def convert_text_to_word(text: str, output_dir: str = 'generated_files') -> str:
     """
     Converts the given text into a Word document and saves it.
 
-    :param text: Text to be converted into a Word document.
-    :param output_dir: Directory where the Word file will be saved.
-    :return: Path to the generated Word document.
-    """
-    # Ensure the output directory exists
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    Args:
+        text (str): Text to be converted into a Word document.
+        output_dir (str): Directory where the Word file will be saved.
 
-    # Define the output file path
-    output_file_path = os.path.join(output_dir, 'text.docx')
+    Returns:
+        str: Path to the generated Word document.
+
+    Raises:
+        ValueError: If the input text is empty or None.
+        OSError: If the output directory cannot be created.
+    """
+    if not text or not text.strip():
+        raise ValueError("Input text must not be empty or only whitespace.")
+
+    # Ensure the output directory exists
+    try:
+        os.makedirs(output_dir, exist_ok=True)
+    except OSError as e:
+        raise OSError(f"Failed to create output directory '{output_dir}': {e}")
+
+    # Use a timestamp to generate a unique file name
+    output_file_path = os.path.join(output_dir, "text.docx")
 
     # Create a Word document
     document = Document()

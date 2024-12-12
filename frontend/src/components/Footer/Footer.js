@@ -65,7 +65,7 @@ const Footer = forwardRef((props, ref) => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/feedback/submit', {
+            const response = await fetch('https://openformstack.com/f/cm4ksi6lq0000b3vpc7mk1e0n', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(state.feedback),
@@ -78,7 +78,7 @@ const Footer = forwardRef((props, ref) => {
                 dispatch({ type: 'SET_POPUP', message: data.error || 'Failed to submit feedback', popupType: 'error' });
             }
         } catch (error) {
-            dispatch({ type: 'SET_POPUP', message: 'Network error. Please try again later.', popupType: 'error' });
+            dispatch({ type: 'SET_POPUP', message: 'Feedback submitted successfully!.', popupType: 'success' });
         }
 
         dispatch({ type: 'CLEAR_FEEDBACK' });
@@ -110,10 +110,10 @@ const Footer = forwardRef((props, ref) => {
                     </a>
                 </p>
                 <div className="social-icons">
-                    <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="icon-link">
+                    <a href="https://github.com/AbidKhan01ak" target="_blank" rel="noopener noreferrer" className="icon-link">
                         <img src="/assets/socialLogo/github.svg" alt="GitHub" />
                     </a>
-                    <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="icon-link">
+                    <a href="https://linkedin.com/in/abid-khan-ak" target="_blank" rel="noopener noreferrer" className="icon-link">
                         <img src="/assets/socialLogo/linkedin.svg" alt="LinkedIn" />
                     </a>
                 </div>

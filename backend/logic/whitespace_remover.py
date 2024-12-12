@@ -1,18 +1,27 @@
-def remove_extra_whitespace(text):
+def remove_extra_whitespace(text: str) -> str:
     """
-    Removes extra whitespace from the input text. If the input contains multiple paragraphs,
-    ensures there is exactly one blank line between paragraphs.
-    """
-    if not text.strip():
-        return ""  # Handle edge case where the input is empty or just whitespace
+    Removes extra whitespace from the input text. Ensures:
+    - Consecutive spaces within a paragraph are reduced to a single space.
+    - Multiple paragraphs have exactly one blank line between them.
 
-    paragraphs = text.split('\n')  # Split into paragraphs based on newline characters
+    Args:
+        text (str): The input text to clean.
+
+    Returns:
+        str: The cleaned text with standardized whitespace.
+    """
+    if not text or not text.strip():
+        return ""  # Handle edge case for empty or whitespace-only input
+
+    # Split into paragraphs based on newline characters
+    paragraphs = text.split('\n')
     cleaned_paragraphs = []
 
     for paragraph in paragraphs:
-        stripped_paragraph = ' '.join(paragraph.split())  # Remove extra spaces between words in each paragraph
-        if stripped_paragraph:  # Skip empty paragraphs
+        # Remove extra spaces between words in the paragraph
+        stripped_paragraph = ' '.join(paragraph.split())
+        if stripped_paragraph:  # Include only non-empty paragraphs
             cleaned_paragraphs.append(stripped_paragraph)
 
-    # Join paragraphs with one blank line in between
+    # Rejoin paragraphs with exactly one blank line (two newlines) in between
     return '\n\n'.join(cleaned_paragraphs)
