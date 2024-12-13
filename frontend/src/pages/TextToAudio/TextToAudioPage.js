@@ -63,6 +63,7 @@ function TextToAudioPage() {
     return (
         <div className="tta-operation-page">
             <h2>Text to Audio</h2>
+            <p>Transform your written text into high-quality <strong>audio speech</strong> with just one click.</p>
             <TextInput
                 value={text}
                 onChange={(e) => setText(e.target.value)}

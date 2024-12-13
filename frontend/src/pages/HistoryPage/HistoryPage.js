@@ -19,7 +19,7 @@ function HistoryPage() {
 
                 if (response.ok) {
                     const data = await response.json();
-                    setHistory(data);
+                    setHistory(data.history);
                 } else {
                     console.error('Failed to fetch history.');
                 }

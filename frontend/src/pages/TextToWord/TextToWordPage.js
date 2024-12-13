@@ -60,6 +60,7 @@ function TextToWordPage() {
     return (
         <div className="ttw-operation-page">
             <h2>Text to Word</h2>
+            <p>Convert your text into a professional <strong>Word document</strong> in just a few clicks with Texter’s easy-to-use tool.</p>
             <TextInput
                 value={text}
                 onChange={(e) => setText(e.target.value)}

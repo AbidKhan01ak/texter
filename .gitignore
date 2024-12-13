@@ -11,12 +11,13 @@ __pycache__
 requirements.txt
 robots.txt
 .gitignore
+/C
 # testing
 /coverage
 .env
 # production
 /build
-
+/build
 # misc
 .DS_Store
 .env.local

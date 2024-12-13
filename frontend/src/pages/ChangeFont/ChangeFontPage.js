@@ -163,6 +163,7 @@ function ChangeFontPage() {
     return (
         <div className="change-font-operation-page">
             <h2>Change Font</h2>
+            <p>Transform your text with ease using Texter's Font Changer — <strong>change fonts</strong> in just a few clicks!</p>
             <TextInput
                 value={text}
                 onChange={(e) => dispatch({ type: 'SET_TEXT', payload: e.target.value })}

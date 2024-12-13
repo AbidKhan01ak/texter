@@ -12,14 +12,14 @@
     /* Font Sizes */
     --font-small: 0.8rem;
     --font-medium: 1rem;
-    --font-large: 1.2rem;
+    --font-large: 1.1rem;
     --font-xlarge: 1.5rem;
     --font-xxlarge: 1.8rem;
 
     /* Spacing */
     --padding-small: 8px;
     --padding-medium: 10px;
-    --padding-large: 20px;
+    --padding-large: 10px;
     --margin-small: 5px;
     --margin-medium: 10px;
     --margin-large: 20px;
@@ -35,64 +35,30 @@
 .footer {
     background-color: var(--primary-bg-color);
     color: var(--secondary-color);
-    padding: var(--padding-large);
     font-size: var(--font-medium);
+    padding: 6px 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: var(--margin-large);
     margin-top: 100px;
     position: relative;
 }
 
-.footer-left, .footer-right {
-    flex: 1;
-    min-width: 300px;
-}
-
-.footer-left {
-    text-align: center;
-}
-
-.footer-right {
+.footer-data {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    justify-content: space-between;
+    min-width: 300px;
+    text-align: center;
+    width: 100%;
+    align-items: center;
 }
 
 .developer-name {
     font-size: var(--font-large);
     font-weight: 600;
     margin-bottom: var(--margin-medium);
-}
-
-.developer-name span {
-    font-size: var(--font-xxlarge);
-    color: var(--highlight-color);
-    font-weight: 900;
-}
-
-.info {
-    font-size: var(--font-large);
-    margin-bottom: var(--margin-medium);
-}
-
-.portfolio-link {
-    display: block;
-    text-align: left;
-    margin-bottom: var(--margin-medium);
-}
-
-.portfolio-link a {
-    text-decoration: none;
-    font-size: var(--font-medium);
-    font-weight: bold;
-    color: var(--secondary-color);
-}
-
-.portfolio-link a span {
-    color: var(--highlight-color);
 }
 
 .social-icons {
@@ -114,59 +80,12 @@
 }
 
 .icon-link img {
-    width: 110%;
+    width: 100%;
     height: auto;
 }
 
 .icon-link:hover {
     transform: translateY(-5px);
-}
-
-.feedback-form {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.feedback-input, .feedback-textArea {
-    width: 100%;
-    font-size: var(--font-medium);
-    padding: var(--padding-small);
-    border-radius: var(--border-radius-medium);
-    border: 1px solid var(--input-border-color);
-    margin-bottom: var(--margin-medium);
-}
-
-.feedback-input:focus, .feedback-textArea:focus {
-    border-color: var(--focus-border-color);
-    outline: none;
-    box-shadow: var(--input-shadow);
-}
-
-.submit-button {
-    background-color: var(--focus-border-color);
-    color: var(--secondary-color);
-    padding: var(--padding-medium) var(--padding-large);
-    border: none;
-    border-radius: var(--border-radius-medium);
-    cursor: pointer;
-    font-size: var(--font-medium);
-    width: 100%;
-    transition: background-color 0.3s ease;
-}
-
-.submit-button:hover {
-    background-color: var(--button-hover-bg-color);
-}
-
-/* Error Styling */
-.footer-error {
-    color: var(--error-color);
-    background-color: var(--error-bg-color);
-    border-radius: var(--border-radius-small);
-    padding: var(--padding-small);
-    margin: var(--margin-small);
-    display: inline;
 }
 
 /* Responsive Breakpoints */
@@ -175,14 +94,18 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        padding: var(--padding-medium);
     }
 
-    .footer-left, .footer-right {
+    .footer-data {
+        justify-content: center;
         width: 100%;
     }
 
     .social-icons {
         justify-content: center;
+        gap: var(--margin-medium);
+        margin-top: var(--margin-medium);
     }
 }
 
@@ -191,42 +114,10 @@
         font-size: var(--font-medium);
     }
 
-    .info {
-        font-size: var(--font-small);
-    }
-
-    .portfolio-link a {
-        font-size: var(--font-small);
-    }
-
-    .feedback-input, .feedback-textArea {
-        font-size: var(--font-small);
-    }
-
-    .submit-button {
-        font-size: var(--font-small);
-    }
 }
 
 @media (max-width: 480px) {
     .footer {
-        padding: var(--padding-medium);
-    }
-
-    .developer-name span {
-        font-size: var(--font-xlarge);
-    }
-
-    .feedback-form {
         padding: var(--padding-small);
-    }
-
-    .feedback-input, .feedback-textArea {
-        padding: var(--padding-small);
-    }
-
-    .submit-button {
-        padding: var(--padding-small) var(--padding-medium);
-        font-size: var(--font-small);
     }
 }

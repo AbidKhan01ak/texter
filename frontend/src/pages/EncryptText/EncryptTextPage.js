@@ -61,6 +61,8 @@ function EncryptTextPage() {
     return (
         <div className="encrypt-text-operation-page">
             <h2>Encrypt Text</h2>
+            <p>Encrypt your text <strong>securely</strong> with Texter and download the encrypted result!</p>
+
             <TextInput
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}

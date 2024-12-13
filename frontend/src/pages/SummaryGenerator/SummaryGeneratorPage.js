@@ -53,6 +53,7 @@ function SummaryGeneratorPage() {
     return (
         <div className="summary-generator-operation-page">
             <h2>Summary Generator</h2>
+            <p>Transform your long text into <strong>concise summaries</strong> effortlessly with Texter’s Summary Generator.</p>
             <TextInput
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}

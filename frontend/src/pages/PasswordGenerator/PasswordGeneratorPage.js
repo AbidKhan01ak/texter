@@ -93,6 +93,8 @@ function PasswordGeneratorPage() {
     return (
         <div className="password-generator-operation-page">
             <h2>Password Generator</h2>
+            <p>Create <strong>secure passwords</strong> effortlessly with Texter's Password Generator — generate customized, strong passwords in seconds!</p>
+            <br />
             <label>
                 Enter Text:
                 <input

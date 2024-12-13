@@ -76,6 +76,8 @@ function BionicReadingPage() {
     return (
         <div className="bionic-reading-operation-page">
             <h2>Bionic Reading</h2>
+            <p>Experience <strong>faster reading</strong> and <strong>improved comprehension</strong> with the Texter's Bionic Reading, designed to help you read and understand text more efficiently.</p>
+
             <TextInput
                 className='br-text-input'
                 value={text}

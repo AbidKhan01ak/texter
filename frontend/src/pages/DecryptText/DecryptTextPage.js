@@ -58,6 +58,7 @@ function DecryptTextPage() {
     return (
         <div className="text-decrypt-operation-page">
             <h2>Decrypt Text</h2>
+            <p>Upload the <strong>encrypted text file</strong>, and Texter will decrypt it for you.</p>
             <div className="file-input-wrapper">
                 <input
                     type="file"

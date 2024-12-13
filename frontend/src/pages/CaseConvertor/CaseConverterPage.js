@@ -143,6 +143,7 @@ function CaseConverterPage() {
     return (
         <div className="case-convertor-operation-page">
             <h2>Case Converter</h2>
+            <p>Effortlessly convert your <strong>text</strong> with Texter's Case Converter.</p>
             <TextInput
                 value={state.text}
                 onChange={(e) => dispatch({ type: 'SET_TEXT', payload: e.target.value })}

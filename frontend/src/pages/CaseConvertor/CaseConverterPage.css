@@ -20,6 +20,7 @@
   --color-text: #111;
   --color-background: #f9f9f946;
   --color-heading: #111;
+  --color-para: #101010;
   
   /* Button */
   --button-radius: 8px;
@@ -45,6 +46,26 @@
   margin: var(--margin-small) 0 var(--margin-large) 0;
   text-align: center;
 }
+ p {
+  font-size: var(--font-medium); 
+  font-weight: 500; 
+  text-align: center;
+  margin-top: var(--margin-medium); 
+  margin-bottom: var(--margin-large);
+  color: var(--color-para); 
+  line-height: 1.5; 
+  letter-spacing: 0.5px;
+  text-transform: capitalize; 
+  max-width: 80%; 
+  margin-left: auto;
+  margin-right: auto; 
+  font-style: italic;
+}
+
+ p strong {
+  font-weight: 600; /* Emphasize important words */
+}
+
 
 .case-convertor-button {
   font-family: 'Merryweather', sans-serif;

@@ -57,7 +57,7 @@ function SignupPage({ showPopup }) {
 
             if (!response.ok) {
                 const data = await response.json();
-                showPopup(data.message || 'Signup failed, account with these details already exists!', 'error');
+                showPopup(data.error || 'Signup failed, account with these details already exists!', 'error');
             } else {
                 showPopup('Signup successful! Redirecting to login...', 'success');
                 navigate('/login');

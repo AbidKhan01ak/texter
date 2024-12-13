@@ -1,5 +1,5 @@
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from dotenv import load_dotenv
@@ -22,7 +22,14 @@ def create_app():
     db.init_app(app)
     JWTManager(app)
 
-    CORS(app, origins=["http://localhost:3000", "https://openformstack.com"])
+    CORS(app,
+     resources={r"/*": {"origins": ["http://localhost:3000", "https://openformstack.com", "https://polite-profiterole-3feded.netlify.app"]}},
+     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+     allow_headers=["Content-Type", "Authorization", "X-Requested-With"],
+     expose_headers=["Content-Type", "Authorization"],
+     supports_credentials=True)
+
+
 
     # Register blueprints
     app.register_blueprint(auth_bp, url_prefix='/auth')
@@ -32,7 +39,16 @@ def create_app():
     with app.app_context():
         # Create tables if they don't exist
         db.create_all()
-
+    
+    @app.before_request
+    def handle_preflight():
+        if request.method == "OPTIONS":
+            response = jsonify({"message": "Preflight request handled"})
+            response.headers.add("Access-Control-Allow-Origin", "*")
+            response.headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+            response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+            response.headers.add("Access-Control-Allow-Private-Network", "true")
+            return response, 200
     # Global error handler
     @app.errorhandler(Exception)
     def handle_exception(e):

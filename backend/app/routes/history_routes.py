@@ -54,7 +54,7 @@ def get_history():
 
         # Fetch paginated history data
         history_query = History.query.filter_by(user_id=user_id).order_by(History.timestamp.desc())
-        history = history_query.paginate(page, per_page, False)
+        history = history_query.paginate(page= page, per_page = per_page, error_out = False)
 
         # Serialize history data
         history_list = [{'action': h.action, 'timestamp': h.timestamp} for h in history.items]

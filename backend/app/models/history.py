@@ -18,26 +18,44 @@ class History(db.Model):
     @staticmethod
     def clean_up_history(user_id, limit=50):
         try:
-            # Get the total count of history entries for the user
-            history_count = db.session.query(History).filter_by(user_id=user_id).count()
+            # Fetch history entries for the user, ordered by timestamp (most recent first)
+            user_history = (
+                db.session.query(History)
+                .filter_by(user_id=user_id)
+                .order_by(History.timestamp.desc())  # Order by most recent first
+                .all()
+            )
+            
+            # Remove duplicates - Keep only the most recent action
+            seen_actions = set()
+            duplicate_entries = []
+            for entry in user_history:
+                if entry.action in seen_actions:
+                    duplicate_entries.append(entry)
+                else:
+                    seen_actions.add(entry.action)
+            
+            # Delete the duplicate entries
+            if duplicate_entries:
+                db.session.query(History).filter(History.id.in_([entry.id for entry in duplicate_entries])).delete(synchronize_session=False)
+                logger.info(f"Removed {len(duplicate_entries)} duplicate history entries for user {user_id}")
 
-            # Check if history count exceeds the limit
-            if history_count > limit:
-                # Fetch the oldest entries beyond the limit
-                excess_entries = (
-                    db.session.query(History)
-                    .filter_by(user_id=user_id)
-                    .order_by(History.timestamp.asc())
-                    .offset(limit)  # Skip the first 'limit' number of records
-                    .all()
-                )
-                
-                # Bulk delete the excess entries
+            # Re-fetch the updated history after removing duplicates
+            user_history = (
+                db.session.query(History)
+                .filter_by(user_id=user_id)
+                .order_by(History.timestamp.desc())
+                .all()
+            )
+
+            # Check if history exceeds the limit after removing duplicates
+            if len(user_history) > limit:
+                # Fetch the least recently used (oldest) entries beyond the limit
+                excess_entries = user_history[limit:]  # Entries beyond the limit
                 db.session.query(History).filter(History.id.in_([entry.id for entry in excess_entries])).delete(synchronize_session=False)
                 db.session.commit()  # Commit the changes
-                
-                logger.info(f"Cleaned up {len(excess_entries)} history entries for user {user_id}")
-        
+                logger.info(f"Cleaned up {len(excess_entries)} history entries for user {user_id}, keeping the most recent {limit} actions")
+
         except Exception as e:
             db.session.rollback()  # Rollback in case of an error
             logger.error(f"Error during history cleanup for user {user_id}: {e}")  # Log the error

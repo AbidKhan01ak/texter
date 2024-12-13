@@ -63,6 +63,7 @@ function CounterAnalyzerPage() {
     return (
         <div className="counter-analyzer-operation-page">
             <h2>Text Analyzer</h2>
+            <p>Unlock valuable <strong>insights</strong> from your text with Texter's Text Analyzer — track word count, sentence count, and more!</p>
             <TextInput
                 value={text}
                 onChange={(e) => setText(e.target.value)}

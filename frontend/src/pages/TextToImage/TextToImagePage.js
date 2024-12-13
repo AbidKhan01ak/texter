@@ -83,12 +83,14 @@ function TextToImagePage() {
     return (
         <div className="tti-operation-page">
             <h2>Text to Image</h2>
+            <p>Turn your <strong>text descriptions</strong> into stunning <strong>images</strong>. Simply type your text and let Texter generate multiple images for you to choose from.</p>
             <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Enter text to convert to images"
                 className="text-input"
             />
+            <p>Image Generation may take some time, please wait</p>
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             <button onClick={handleTextToImage} disabled={loading} className="generate-button">
                 {loading ? <LoadingSpinner /> : 'Generate Images'}

@@ -88,6 +88,7 @@ function WhitespaceRemoverPage() {
     return (
         <div className="whitespace-remover-operation-page">
             <h2>Whitespace Remover</h2>
+            <p>Remove extra whitespace from your <strong>text</strong> effortlessly with Texter's Whitespace Remover!</p>
             <TextInput
                 value={text}
                 onChange={(e) => setText(e.target.value)}
